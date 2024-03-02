@@ -10,7 +10,7 @@ st.sidebar.markdown('<a href="#criteria-for-choosing-a-model" style="text-decora
 
 st.markdown("<a name='criteria-for-choosing-a-model'></a>", unsafe_allow_html=True)
 st.header('Criteria for Choosing a Model')
-st.write('Insert your content here...')
+st.write('The model needed to be accurate and be capable of predicting the number of days late or early a delivery would be.')
 
 st.subheader("Features")
 st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/hackusu_scatterplot.png', caption='scatter')
