@@ -20,6 +20,7 @@ st.subheader("Binary Model")
 st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/binary_models.png', caption='binary_model')
 
 st.subheader("Basic Regression")
+st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/reg_model.png', caption='reg_model')
 
 
 st.subheader("Classification Model")
@@ -56,3 +57,8 @@ precision of 0.88, suggesting it performs well in distinguishing between the pos
 and negative classes for the task at hand. However, the precision decreases as the 
 recall increases, which is a typical behavior for most classifiers.
 ''')
+
+
+st.subheader("NN Regression")
+st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/NeuralNetTraining.png', caption='NN_training')
+st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/NeuralNetTrainingCode.png', caption='NN_code')
