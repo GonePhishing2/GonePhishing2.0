@@ -19,3 +19,5 @@ st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Str
 st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/classification_model.png', caption='class_model')
 st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/classification_recall_curve.png', caption='class_recall')
 st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/classification_roc.png', caption='class_roc')
+st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/hackusu_scatterplot.png', caption='scatter')
+st.image('https://raw.githubusercontent.com/peircerandy/GonePhishing2.0/main/Streamlit/images/hackusu_scatterplot_code.png', caption='scatter_code')
