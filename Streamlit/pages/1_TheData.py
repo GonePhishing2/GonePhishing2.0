@@ -10,7 +10,7 @@ st.sidebar.markdown('<a href="#feature-engineering" style="text-decoration: none
 st.sidebar.markdown('<a href="#modeling-techniques" style="text-decoration: none; color: black;">Modeling Techniques</a>', unsafe_allow_html=True)
 
 st.markdown("<a name='data-preparationcleaning'></a>", unsafe_allow_html=True)
-st.header('Data Cleaning and Preparation)
+st.header('Data Cleaning and Preparation')
 st.subheader('Dealing with Data Types')
 st.write('We started by examining the data and its types. It was evident that the dates were formatted as numbers, which we corrected by converting them to date format.')
 
