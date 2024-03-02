@@ -5,8 +5,8 @@ st.title('Thank You Koch and Snowflake!')
 st.write('### Things We Have Learned During This Competition')
 
 # List of items to display as bullet points
-items = ["Tyler: Snowflake, Data Cleaning", "Randy: Pycarot Libary, SQL, Streamlit", 
-         "Logan: Machine Learning ,Streamlit, SQL", "Annaka: Machine Learning, Data Cleaning, Snowflake"]
+items = ["Tyler: Snowflake, Data Cleaning, Pycarot, Pytorch", "Randy: Pycarot Libary, Data Cleaning, Connecting to Remote Databases", 
+         "Logan: Machine Learning ,Streamlit, SQL, Snowflake", "Annaka: Machine Learning, Data Cleaning, Snowflake, Streamlit, Classification Models"]
 
 # Convert the list to a Markdown-formatted string
 bullet_list = "\n".join(f"* {item}" for item in items)
