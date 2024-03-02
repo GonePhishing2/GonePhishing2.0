@@ -10,21 +10,26 @@ st.sidebar.markdown('<a href="#feature-engineering" style="text-decoration: none
 st.sidebar.markdown('<a href="#modeling-techniques" style="text-decoration: none; color: black;">Modeling Techniques</a>', unsafe_allow_html=True)
 
 st.markdown("<a name='data-preparationcleaning'></a>", unsafe_allow_html=True)
-st.header('Data Cleaning and Preporation')
-st.subheader('Sub 1')
-st.write('Insert your content here...')
+st.header('Data Cleaning and Preparation)
+st.subheader('Dealing with Data Types')
+st.write('We started by examining the data and its types. It was evident that the dates were formatted as numbers, which we corrected by converting them to date format.')
 
-st.subheader('Sub 1')
-st.write('Insert your content here...')
+st.subheader('Dealing with Nulls')
+st.write('To handle missing data, we conducted the following steps:')
+st.write("- Filled in missing 'FIRST_GR_POSTING_DATE_ML' data using 'PLANNED_DELIVERY_DAYS' and 'RELEASE_DATE_ML'.")
+st.write("- Filled in missing 'PLANNED_DELIVERY_DAYS' data using 'RELEASE_DATE_ML' and 'FIRST_GR_POSTING_DATE_ML'.")
+st.write("- We removed rows with null values from specific columns to ensure data integrity.")
+st.write("- Dropped nulls from the following columns:")
+st.write("  - COMPANY_CODE_ID")
+st.write("  - PURCHASE_DOCUMENT_ITEM_ID")
+st.write("  - INBOUND_DELIVERY_ITEM_ID")
+st.write("  - PLANNED_DELIVERY_DAYS")
 
-st.subheader('Sub 1')
-st.write('Insert your content here...')
+st.subheader('Dealing with Creating New Columns')
+st.write('We created a new column named "LATE" to determine if a delivery was late or not. We used an IF statement to assign a boolean value based on the comparison between "DELIVERY_DATE_ML" and "FIRST_GR_POSTING_DATE_ML".')
+st.write('We created new columns that were the date instead of numeric for the date columns.')
 
-st.markdown("<a name='feature-engineering'></a>", unsafe_allow_html=True)
-st.header('Feature Engineering')
-st.subheader('Column in Snowflake')
-st.write('Insert your content here...')
-
+          
 st.subheader('Model Feature')
 # Describe the feature engineering and selection methodology
 st.markdown('''
