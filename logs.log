@@ -7424,3 +7424,45 @@ Alternately, you can install this by running `pip install pycaret[models]`
 2024-03-02 09:31:54,497:WARNING:c:\Users\peirc\anaconda3\envs\snowpark-ml\Lib\site-packages\sklearn\preprocessing\_encoders.py:868: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
   warnings.warn(
 
+2024-03-02 11:35:15,914:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_400\4262917403.py:10: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 11:35:16,135:WARNING:c:\Users\peirc\anaconda3\envs\snowpark-ml\Lib\site-packages\torch\nn\modules\loss.py:535: UserWarning: Using a target size (torch.Size([64])) that is different to the input size (torch.Size([64, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+
+2024-03-02 11:46:14,307:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_400\4199863311.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 11:46:14,447:WARNING:c:\Users\peirc\anaconda3\envs\snowpark-ml\Lib\site-packages\torch\nn\modules\loss.py:535: UserWarning: Using a target size (torch.Size([64])) that is different to the input size (torch.Size([64, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+
+2024-03-02 11:59:12,138:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_400\4199863311.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:01:09,273:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\4199863311.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:07:00,592:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\4199863311.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:07:48,039:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\3620342055.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:08:07,408:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\923217152.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:10:40,583:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\3519330781.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:14:23,345:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\3519330781.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:14:56,894:WARNING:c:\Users\peirc\anaconda3\envs\snowpark-ml\Lib\site-packages\torch\nn\modules\loss.py:535: UserWarning: Using a target size (torch.Size([64])) that is different to the input size (torch.Size([64, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+
+2024-03-02 12:20:11,625:WARNING:C:\Users\peirc\AppData\Local\Temp\ipykernel_28060\3519330781.py:2: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  train_dataset = torch.utils.data.TensorDataset(torch.tensor(X), torch.tensor(y))
+
+2024-03-02 12:20:11,780:WARNING:c:\Users\peirc\anaconda3\envs\snowpark-ml\Lib\site-packages\torch\nn\modules\loss.py:101: UserWarning: Using a target size (torch.Size([64])) that is different to the input size (torch.Size([64, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.l1_loss(input, target, reduction=self.reduction)
+
