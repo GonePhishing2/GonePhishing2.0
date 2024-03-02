@@ -86,7 +86,7 @@ Encouraged by the reasonable accuracy from our classification model, we attempte
 
 st.subheader('Regression NN')
 st.write('''
-For randy to finish.
+Regression models provide more continuous predictions, which can be useful for understanding the nuances of delivery times. We explored the capabilities of a Neural Network for regression to leverage the complex patterns in our data and enhance our predictive capabilities by providing the exact lead time to expect. This effort took much data cleaning to convert categorical data into numerical data using techniques such as one-hot encoding and hashing. We were able to successfully implement the model, but due to time constraints, we were unable to fully optimize the model to actually learn. At the time being it's predictions are just as good as a random guess, but we are confident that with more time and resources, we can make this model a valuable asset to our predictive capabilities.
 ''')
 
 st.subheader('Neural Network Classification')
