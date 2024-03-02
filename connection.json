@@ -1,6 +1,9 @@
 {
     "user": "CHIPMUNK", 
-    "account": "SFEDU02.VAB89880",
+    "account": "VAB89880",
     "password": "GonePhishing4",
-    "warehouse": "GONEPHISHING_WAREHOUSE(X-Small)"
+    "warehouse": "GONEPHISHING_WAREHOUSE",
+    "database": "HACKATHON_GONEPHISHING",
+    "role": "ACCOUNTADMIN",
+    "schema": "PROCUREMENT_ON_TIME_DELIVERY"
 }
