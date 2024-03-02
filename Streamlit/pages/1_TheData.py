@@ -10,7 +10,7 @@ st.sidebar.markdown('<a href="#feature-engineering" style="text-decoration: none
 st.sidebar.markdown('<a href="#modeling-techniques" style="text-decoration: none; color: black;">Modeling Techniques</a>', unsafe_allow_html=True)
 
 st.markdown("<a name='data-preparationcleaning'></a>", unsafe_allow_html=True)
-st.header('Data Preparation/Cleaning')
+st.header('Data Cleaning and Preporation')
 st.write('Insert your content here...')
 
 st.markdown("<a name='feature-engineering'></a>", unsafe_allow_html=True)
