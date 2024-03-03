@@ -1,0 +1,105 @@
+# The Snowpark package is required for Python Worksheets. 
+# You can add more packages by selecting them using the Packages control and then importing them.
+
+import snowflake.snowpark as snowpark
+from snowflake.snowpark.functions import datediff, to_date, col, expr
+
+def main(session: snowpark.Session): 
+    # Connecting to the correct table
+    tableName = 'PURCHASE_ORDER_HISTORY'
+    dataframe = session.table(tableName)
+
+    # Calculation to find the lag between Planned Delivery from Actual Delivery
+    dataframe = dataframe.withColumn("target_feature",
+                                     datediff('day', 
+                                              col("DELIVERY_DATE_ML"), 
+                                              col("FIRST_GR_POSTING_DATE_ML")))
+    
+    
+    # Example: Selecting specific columns
+    # This selects only a subset of columns. Adjust the column names as needed.
+    filtered_dataframe = dataframe.select(
+        col("PURCHASE_DOCUMENT_ITEM_ID"), # ID for purchase order
+        col("CREATE_DATE_ML"),            # day purchase order was created
+        col("COMPANY_CODE_ID"),           # copmany w/in INVISTA making purchase
+        col("VENDOR_ID"),                 # ID of the vendor "we" are purchasing from
+        col("POSTAL_CD"),                 # postal code associated w company code ID
+        col("RELEASE_DATE_ML"),           # date the requisition line item was released
+        col("MATERIAL_ID"),               # ID of material being purchase
+        col("SUB_COMMODITY_DESC"),        # description of sub commodity
+        col("MRP_TYPE_ID"),               # determined if material is reordered manually or automatically
+        col("PLANT_ID"),                  # ID of plant making purchase
+        col("POR_DELIVERY_DATE_ML"),      # Confirmed date provided by vendor
+        col("DELIVERY_DATE_ML"),          # Delivery date from purchase order
+        col("REQUESTED_DELIVERY_DATE_ML"),# delivery date from requisition
+        col("INBOUND_DELIVERY_ID"),       # ID for delivery
+        col("INBOUND_DELIVERY_ITEM_ID"),  # ID of item w/in delivery
+        col("PLANNED_DELIVERY_DAYS"),     # Amount of days expected to take
+        col("FIRST_GR_POSTING_DATE_ML"),  # expected delivery date        
+
+    )
+
+    # Print a sample of the filtered dataframe to standard output.
+    filtered_dataframe.show()
+
+    # # Optionally, you might want to filter rows based on some conditions
+    # # Example: Filtering out rows where FIRST_GR_POSTING_DATE_ML is NULL
+    # filtered_dataframe = filtered_dataframe.filter(col("FIRST_GR_POSTING_DATE_ML").is_not_null())
+
+    # Show the DataFrame after filtering
+    filtered_dataframe.show()
+
+    # Return the DataFrame for further use
+    return filtered_dataframe
+
+    import snowflake.snowpark as snowpark
+from snowflake.snowpark.functions import datediff, to_date, col, expr
+# import pandas as pd
+
+def main(session: snowpark.Session):
+    # Connect to the correct table
+    tableName = 'PURCHASE_ORDER_HISTORY'
+    dataframe = session.table(tableName)
+
+    dataframe.isnull().sum()
+    
+    # # Example: Selecting specific columns
+    # # This selects only a subset of columns. Adjust the column names as needed.
+    # filtered_dataframe = dataframe.select(
+    #     col("PURCHASE_DOCUMENT_ITEM_ID"), # ID for purchase order
+    #     col("CREATE_DATE_ML"),            # day purchase order was created
+    #     col("COMPANY_CODE_ID"),           # copmany w/in INVISTA making purchase
+    #     col("VENDOR_ID"),                 # ID of the vendor "we" are purchasing from
+    #     col("POSTAL_CD"),                 # postal code associated w company code ID
+    #     col("RELEASE_DATE_ML"),           # date the requisition line item was released
+    #     col("MATERIAL_ID"),               # ID of material being purchase
+    #     col("SUB_COMMODITY_DESC"),        # description of sub commodity
+    #     col("MRP_TYPE_ID"),               # determined if material is reordered manually or automatically
+    #     col("PLANT_ID"),                  # ID of plant making purchase
+    #     col("POR_DELIVERY_DATE_ML"),      # Confirmed date provided by vendor
+    #     col("DELIVERY_DATE_ML"),          # Delivery date from purchase order
+    #     col("REQUESTED_DELIVERY_DATE_ML"),# delivery date from requisition
+    #     col("INBOUND_DELIVERY_ID"),       # ID for delivery
+    #     col("INBOUND_DELIVERY_ITEM_ID"),  # ID of item w/in delivery
+    #     col("PLANNED_DELIVERY_DAYS"),     # Amount of days expected to take
+    #     col("FIRST_GR_POSTING_DATE_ML"),  # expected delivery date        
+    #     col("target_feature")             # Lag between Planned Delivery from Actual Delivery 
+    # )
+
+
+    # Print a sample of the filtered dataframe to standard output.
+    filtered_dataframe.show()
+
+    # # Optionally, you might want to filter rows based on some conditions
+    # # Example: Filtering out rows where FIRST_GR_POSTING_DATE_ML is NULL
+    # filtered_dataframe = filtered_dataframe.filter(col("FIRST_GR_POSTING_DATE_ML").is_not_null())
+
+    # Show the DataFrame after filtering
+    filtered_dataframe.show()
+
+    # Return the DataFrame for further use
+    
+    # Perform column statistics analysis
+    analyze_column_stats(filtered_dataframe)
+
+    return filtered_dataframe
