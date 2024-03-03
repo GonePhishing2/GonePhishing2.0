@@ -1,0 +1,102 @@
+# Import python packages
+import streamlit as st
+from snowflake.snowpark.context import get_active_session
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import snowflake.connector as snow
+
+
+# Get the current credentials
+session = get_active_session()
+
+# Import data 
+KochData = session.sql("select PURCHASE_DOCUMENT_ID,CREATE_DATE_ML,COMPANY_CODE_ID,VENDOR_ID, POSTAL_CD,RELEASE_DATE_ML,PURCHASE_DOCUMENT_ITEM_ID,MATERIAL_ID,SUB_COMMODITY_DESC,PLANT_ID,DELIVERY_DATE_ML,FIRST_GR_POSTING_DATE_ML,INBOUND_DELIVERY_ID,INBOUND_DELIVERY_ITEM_ID,PLANNED_DELIVERY_DAYS, LATE FROM PURCHASE_ORDER_HISTORY;")
+# # Execute the query and convert it into a Pandas dataframe
+queried_data = KochData.to_pandas()
+st.dataframe(queried_data.head())
+st.write(queried_data.info())
+
+# # Scatter plot attempt 1
+# sns.scatterplot(data=queried_data, x='VENDOR_ID', y='LATE', hue = 'LATE')
+
+
+
+# Function to process data and create the new DataFrame
+def process_data(df):
+    # Group by vendor_id and calculate the late percentage
+    vendor_late_percentage = df.groupby('VENDOR_ID')['LATE'].mean().sort_values(ascending=False).head(5)
+    
+    # Filter original dataframe to include only the top 5 vendors
+    top_vendors_df = df[df['VENDOR_ID'].isin(vendor_late_percentage.index)]
+    
+    return top_vendors_df
+
+# import streamlit as st
+# import pandas as pd
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+
+# # Function to process data and create the new DataFrame
+# def process_data(df):
+#     # Select the first 100 rows
+#     top_vendors_df = df.head(100)
+    
+#     return top_vendors_df
+
+# # Streamlit app
+# def main():
+#     st.title("Top 100 Vendors (First 100 Rows)")
+    
+#     # Process data
+#     top_vendors_df = process_data(queried_data)
+    
+#     # Create scatter plot
+#     sns.scatterplot(data=top_vendors_df, x='VENDOR_ID', y='LATE', hue='LATE')
+#     plt.xlabel('Vendors')
+#     plt.ylabel('Late')
+#     plt.title('Top 100 Vendors (First 100 Rows)')
+#     st.pyplot()
+    
+# if __name__ == "__main__":
+#     main()
+
+
+## Perfect Chart
+import streamlit as st
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Function to process data and create the new DataFrame
+def process_data(df):
+    # Group by vendor_id and calculate the late percentage
+    df['LATE_PERCENTAGE'] = df.groupby('VENDOR_ID')['LATE'].transform('mean') * 100
+    
+    return df
+
+# Streamlit app
+def main():
+    st.title("Top 1000 Vendors with Late Delivery Percentage")
+    
+    # Process data
+    processed_data = process_data(queried_data)
+    
+    # Select the top 1000 vendor IDs based on their frequency
+    top_vendors = processed_data['VENDOR_ID'].value_counts().head(1000).index
+    
+    # Filter the dataframe to include only the top 1000 vendor IDs
+    processed_data = processed_data[processed_data['VENDOR_ID'].isin(top_vendors)]
+    
+    # Create scatter plot
+    fig, ax = plt.subplots()
+    sns.scatterplot(data=processed_data, x='VENDOR_ID', y='LATE_PERCENTAGE', hue='LATE_PERCENTAGE', ax=ax)
+    plt.xlabel('')  # Remove x-axis label
+    plt.ylabel('Late Percentage')
+    plt.title('Top 1000 Vendors with Late Delivery Percentage')
+    plt.xticks([])  # Remove x-axis ticks
+    plt.legend(title='Late Percentage', bbox_to_anchor=(1.05, 1), loc='upper left')
+    st.pyplot(fig)
+    
+if __name__ == "__main__":
+    main()
