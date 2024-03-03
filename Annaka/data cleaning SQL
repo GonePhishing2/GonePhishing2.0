@@ -6,3 +6,75 @@ LIMIT 100;
 -- SQL query to retrieve column names and data types
 SHOW COLUMNS IN PURCHASE_ORDER_HISTORY;
 -- also look at data code for exact info
+
+-- Target: build your target you’ll need to take FIRST_GR_POSTING_DATE (which is when the 
+-- product was received), and subtract it from DELIVERY_DATE (estimated delivery date from 
+-- the vendor). Reach out if you have any questions.
+
+
+-- SQL query to retrieve column names and data types
+SHOW COLUMNS IN PURCHASE_ORDER_HISTORY;
+
+
+-- Step 1: Add a new column to store the converted dates
+-- ALTER TABLE PURCHASE_ORDER_HISTORY
+-- -- ADD COLUMN CREATE_DATE_ML DATE
+-- ADD COLUMN FIRST_GR_POSTING_DATE_ML DATE;
+
+-- ALTER TABLE PURCHASE_ORDER_HISTORY
+-- ADD COLUMN DELIVERY_DATE_ML DATE;
+
+-- ALTER TABLE PURCHASE_ORDER_HISTORY
+-- ADD COLUMN REQUESTED_DELIVERY_DATE_ML DATE;
+
+ALTER TABLE PURCHASE_ORDER_HISTORY
+ADD COLUMN POR_DELIVERY_DATE_ML DATE;
+
+-- Step 2: Update the new column with the converted date values
+-- Casting the date column to a character or string datatype first before using TO_DATE seems to work consistently each time.
+
+-- UPDATE PURCHASE_ORDER_HISTORY
+-- SET DELIVERY_DATE_ML = TO_DATE(TO_CHAR(DELIVERY_DATE), 'YYYYMMDD');
+--SET CREATE_DATE_ML = TO_DATE(TO_CHAR(CREATE_DATE), 'YYYYMMDD')
+
+UPDATE PURCHASE_ORDER_HISTORY
+SET FIRST_GR_POSTING_DATE_ML = 
+    CASE 
+        WHEN FIRST_GR_POSTING_DATE != 0
+        THEN TO_DATE(TO_CHAR(FIRST_GR_POSTING_DATE), 'YYYYMMDD')
+        ELSE NULL
+        END
+        ;
+
+UPDATE PURCHASE_ORDER_HISTORY
+SET POR_DELIVERY_DATE_ML = 
+    CASE 
+        WHEN POR_DELIVERY_DATE != 0
+        THEN TO_DATE(TO_CHAR(POR_DELIVERY_DATE), 'YYYYMMDD')
+        ELSE NULL
+        END
+        ;
+
+UPDATE PURCHASE_ORDER_HISTORY
+SET REQUESTED_DELIVERY_DATE_ML = TO_DATE(TO_CHAR(REQUESTED_DELIVERY_DATE), 'YYYYMMDD');
+
+
+ALTER TABLE PURCHASE_ORDER_HISTORY
+ADD COLUMN RELEASE_DATE_ML DATE;
+
+UPDATE PURCHASE_ORDER_HISTORY
+SET RELEASE_DATE_ML = 
+    CASE 
+        WHEN RELEASE_DATE != 0
+        THEN TO_DATE(TO_CHAR(RELEASE_DATE), 'YYYYMMDD')
+        ELSE NULL
+        END
+        ;
+
+
+        
+-- Investigate error columns
+SELECT REQUESTED_DELIVERY_DATE, FIRST_GR_POSTING_DATE
+FROM PURCHASE_ORDER_HISTORY
+WHERE FIRST_GR_POSTING_DATE = 0
+;
