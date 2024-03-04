@@ -1,0 +1,44 @@
+from snowflake.snowpark import Session
+from snowflake.snowpark.functions import datediff, to_date, col, expr
+
+def main(session: Session):
+    tableName = 'PURCHASE_ORDER_HISTORY'
+    dataframe = session.table(tableName)
+
+    # Correcting the datediff usage with 'day' as the first argument
+    dataframe = dataframe.withColumn("target_feature",
+                                      datediff('day', col("DELIVERY_DATE_ML"), col("FIRST_GR_POSTING_DATE_ML")))
+    
+    # Assuming the rest of your columns are correct and relevant
+    filtered_dataframe = dataframe.select(
+        col("PURCHASE_DOCUMENT_ITEM_ID"), # ID for purchase order
+        col("VENDOR_ID"),                 # ID of the vendor "we" are purchasing from
+        col("POSTAL_CD"),                 # postal code associated w company code ID
+        col("PLANT_ID"),                  # ID of plant making purchase
+        col("MATERIAL_ID"),               # ID of material being purchase
+        col("MRP_TYPE_ID"),               # determined if material is reordered manually or automatically
+        col("COMPANY_CODE_ID"),           # copmany w/in INVISTA making purchase
+        col("SUB_COMMODITY_DESC"),        # description of sub commodity
+        col("INBOUND_DELIVERY_ID"),       # ID for delivery
+        col("INBOUND_DELIVERY_ITEM_ID"),  # ID of item w/in delivery
+        col("CREATE_DATE_ML"),            # 
+        col("DELIVERY_DATE_ML"),          # Delivery date from Purchase Order
+        col("FIRST_GR_POSTING_DATE_ML"),  # expected delivery date
+        col("REQUESTED_DELIVERY_DATE_ML"),#
+        col("PLANNED_DELIVERY_DAYS"),     #
+        col("target_feature")             # 
+        
+    )
+
+    # Print a sample of the filtered dataframe to standard output.
+    filtered_dataframe.show()
+
+    # Optionally, you might want to filter rows based on some conditions
+    # Example: Filtering out rows where FIRST_GR_POSTING_DATE_ML is NULL
+    filtered_dataframe = filtered_dataframe.filter(col("FIRST_GR_POSTING_DATE_ML").is_not_null())
+
+    
+    # Show the DataFrame after filtering
+    filtered_dataframe.show()
+
+    return filtered_dataframe
