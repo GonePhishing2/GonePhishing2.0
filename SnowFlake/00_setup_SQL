@@ -1,0 +1,8 @@
+-- basic investigating
+SELECT *
+FROM PURCHASE_ORDER_HISTORY
+LIMIT 100;
+
+-- SQL query to retrieve column names and data types
+SHOW COLUMNS IN PURCHASE_ORDER_HISTORY;
+-- also look at data code for exact info
