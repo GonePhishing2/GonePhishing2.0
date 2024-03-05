@@ -1,6 +1,4 @@
-# GonePhishing2.0
- USU Hackathon Project
-# AI & Machine Learning Project: Parts Delivery Prediction
+# GonePhishing2.0 Utah State University Hackathon Project
 
 Welcome to our AI & Machine Learning project repository! This project was completed as part of a hackathon organized by Utah State University, focusing on the Snowflake data platform. We were tasked with predicting the arrival time of spare parts for a manufacturing company, aiming to address delays in part deliveries.
 
@@ -10,7 +8,7 @@ Our primary objective was to leverage AI and machine learning techniques to impr
 
 ## Problem Statement
 
-The challenge we faced revolved around the uncertainty in predicting delivery times due to disorganized data. Our task was to streamline this data to enhance the effectiveness of our machine learning models. By doing so, we aimed to improve operational efficiency and minimize production delays.
+The challenge we faced revolved around the uncertainty in predicting delivery times due to disorganized data. Our task was to streamline this data to enhance the effectiveness of our machine-learning models. By doing so, we aimed to improve operational efficiency and minimize production delays.
 
 ## Data Cleaning and Preparation
 
